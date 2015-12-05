@@ -3,11 +3,34 @@
 <head>
 	<meta charset="UTF-8">
 	<title>:(</title>
+	<style>
+		body,div,h1,h3,p{padding:0px;margin:0px;}
+		body{color:#333;}
+		.content{padding:18px 36px;}
+		h1{font-size: 100px;}
+		.p{padding-bottom:20px;}
+		h3{padding:8px 0px;}
+		.copyright{color:#ccc;}
+		.copyright a{text-decoration: none;color:#686868;}
+	</style>
 </head>
 <body>
-	:(
-	<div class="copyright">
-		WPHP<sup>1.0</sup> [好好学习，天天向上]
+	<div class="content">
+		<h1>:(</h1>
+		<div class="p"><?php echo $e['message']; ?></div>
+		<?php if(DEBUG){ ?>
+		<div class="p">
+			<h3>错误位置</h3>
+			<p>FILE:<?php echo $e['file']; ?>[line:<?php echo $e['line']; ?>]</p>
+		</div>
+		<div class="p">
+			<h3>TRACE</h3>
+			<p><?php echo nl2br($e['trace']); ?></p>
+		</div>
+		<?php } ?>
+		<div class="copyright">
+			<a href="WPHP.COM">WPHP<sup><?php echo WPHP_VERSION; ?></sup></a> [好好学习，天天向上]
+		</div>		
 	</div>
 </body>
 </html>

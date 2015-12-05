@@ -76,6 +76,8 @@ final class WPHP{
 		define('APP_CONTROLLER_PATH', APP_PATH . '/Controller');
 		define('APP_TPL_PATH', APP_PATH . '/Tpl');
 		define('APP_PUBLIC_PATH', APP_TPL_PATH . '/Public');
+		//框架版本
+		define('WPHP_VERSION','V1.0');
 	}
 }
 

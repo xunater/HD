@@ -11,14 +11,13 @@ final class Log{
 	 * @param  [type]  $dest  [description]
 	 * @return [type]         [description]
 	 */
-	public static function write($error,$level='ERROR',$type=3,$dest=NULL){
+	public static function write($msg,$level='ERROR',$type=3,$dest=NULL){
+		if(!C('SAVE_LOG')) return;
 		$dest = is_null($dest) ? LOG_PATH . '/' . date('Y-m-d') .'.log' : $dest;
-		if(is_array($error)){
-			error_log($error['message'],$type,$dest);
-		}
-		if (is_string($error)) {
-			$error = '[TIME:'.date('Y-m-d H:i:s').']'.$level.':'.$error."\r\n";
+		if(is_dir(LOG_PATH)){
+			$error = '[TIME:'.date('Y-m-d H:i:s').']'.$level.':'.$msg."\r\n";
 			error_log($error,$type,$dest);
-		}
+		}	
 	}
 }
+?>

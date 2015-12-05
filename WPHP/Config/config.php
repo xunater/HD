@@ -10,4 +10,10 @@ return array(
 	"CONTROLLER_VAR"			=>	'c',
 	//默认动作参数
 	"ACTION_VAR"					=>	'a',
+	//是否写入日志
+	"SAVE_LOG"					=>	true,
+	//生产环境下错误跳转页面
+	"ERROR_URL"					=>	'',
+	//生产环境下错误提示信息
+	"ERROR_MSG"					=>	'服务器君迷路了...'
 );
