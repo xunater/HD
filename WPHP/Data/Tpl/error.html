@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>:(</title>
+<style>
+	.mask{
+		background: #3c3c3c; opacity: 0.36; position: absolute; top: 0px;left:0px;right:0px;bottom: 0px;
+		filter:alpha(opacity=36);	
+	}
+	.box{
+		background:#fff;
+		width:360px;height:200px;display: block;position: absolute;top:50%;left:50%;margin-left:-180px;margin-top:-150px;
+	}
+	h3{padding:0px;margin:0px;padding:6px 12px;background:#ccc;font-size: 14px;font-weight: normal;margin-bottom:20px;color:#333;}
+	p{text-align: center;}
+	#timer{color:#800;padding:0px 3px;}
+</style>
+</head>
+<body>
+	<div class="mask"></div>
+	<div class="box">
+		<h3>:( </h3>
+		<p><?php echo $msg; ?></p>
+		<p><span id="timer"><?php echo $time; ?></span>秒后将 <a href="javascript:<?php echo $url; ?>;">跳转</a></p>
+	</div>
+	<script>
+		window.onload=function(){
+			var _timerEle = document.getElementById('timer');
+			var _sec = <?php echo $time; ?>;
+			var _timer = setInterval(function(){
+				_timerEle.innerHTML = --_sec;
+				if(_sec <= 0){
+					clearInterval(_timer);
+					<?php echo $url; ?>;
+				}
+			},1000)
+		}
+
+	</script>
+</body>
+</html>
