@@ -78,6 +78,11 @@ final class WPHP{
 		define('APP_PUBLIC_PATH', APP_TPL_PATH . '/Public');
 		//框架版本
 		define('WPHP_VERSION','V1.0');
+		//是否是post提交
+		define('IS_POST',(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST') ? true :false);
+		// 是否为AJAX提交
+		define('IS_AJAX',(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') ? true : false);
+
 	}
 }
 

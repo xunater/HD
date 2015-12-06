@@ -17,7 +17,8 @@ class Application{
 	private static function _app_run(){
 		$c = isset($_GET[C('CONTROLLER_VAR')]) ? $_GET[C('CONTROLLER_VAR')] : 'Index';
 		$a = isset($_GET[C('ACTION_VAR')]) ? $_GET[C('ACTION_VAR')] : 'index';
-
+		define('CONTROLLER',$c);
+		define('ACTION',$a);
 		$c .= 'Controller';
 		$obj = new $c();
 		$obj->$a();

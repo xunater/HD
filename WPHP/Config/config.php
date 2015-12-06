@@ -10,6 +10,8 @@ return array(
 	"CONTROLLER_VAR"			=>	'c',
 	//默认动作参数
 	"ACTION_VAR"					=>	'a',
+	//模板文件默认后缀名
+	"TPL_SUFFIX"					=>	'.html',
 	//是否写入日志
 	"SAVE_LOG"					=>	true,
 	//生产环境下错误跳转页面
