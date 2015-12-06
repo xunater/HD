@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>:(</title>
+	<style>
+		body,div,h3,p{padding:0px;margin:0px;}
+		.notice{margin:20px;padding:10px 20px;border: 1px dashed #d88;}
+		h3{line-height: 30px;}
+		p{line-height: 28px;}
+		.copyright{color:#ccc;}
+		.copyright a{text-decoration: none;color:#686868;}
+	</style>
+</head>
+<body>
+	<div class="notice">
+		<h3> <?php echo $error; ?> </h3>
+		<p>
+			Severity： <?php echo $errno; ?>
+		</p>
+		<p>
+			File： <?php echo $file; ?>
+		</p>
+		<p>
+			Line： <?php echo $line; ?>
+		</p>
+		<div class="copyright">
+			<a href="WPHP.COM">WPHP<sup><?php echo WPHP_VERSION; ?></sup></a> [好好学习，天天向上]
+		</div>
+	</div>
+
+</body>
+</html>

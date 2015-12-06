@@ -17,5 +17,7 @@ return array(
 	//生产环境下错误跳转页面
 	"ERROR_URL"					=>	'',
 	//生产环境下错误提示信息
-	"ERROR_MSG"					=>	'服务器君迷路了...'
+	"ERROR_MSG"					=>	'服务器君迷路了...',
+	//Common/Lib目录下文件的自动载入
+	"USER_IMPORT_FILE"		=>	array(),
 );
