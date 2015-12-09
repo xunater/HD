@@ -19,5 +19,13 @@ return array(
 	//生产环境下错误提示信息
 	"ERROR_MSG"					=>	'服务器君迷路了...',
 	//Common/Lib目录下文件的自动载入
-	"USER_IMPORT_FILE"		=>	array(),
+	"USER_IMPORT_FILE"			=>	array(),
+	/**********************数据库配置***********************/
+	"DB_CHARSET"					=>	'utf8',
+	"DB_HOST"						=>	'127.0.0.1',
+	"DB_PORT"						=>	3306,
+	"DB_USER"						=>	'root',
+	"DB_PWD"						=>	'',
+	"DB_DATABASE"				=>	'',
+	"DB_PREFIX"					=>	'wb_',
 );

@@ -101,4 +101,7 @@ function halt($error,$level='ERROR',$type=3,$dest=NULL){
 	require TPL_PATH . '/halt.html';
 	die;
 }
+function M($table=null){
+	return new Model($table);
+}
 ?>
