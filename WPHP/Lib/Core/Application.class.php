@@ -110,6 +110,32 @@ str;
 	 */
 	private static function _autoload($className){
 		// echo APP_CONTROLLER_PATH . '/' . $className .'.class.php';
+		switch (true) {
+			case strlen($className) > 10 && substr($className, -10) == 'Controller':
+				$path = APP_CONTROLLER_PATH . '/' . $className .'.class.php';
+				if(!is_file($path)){
+					$emptyPath = APP_CONTROLLER_PATH . '/EmptyController.class.php';
+					if(is_file($emptyPath)){
+						require_once $emptyPath; return;
+					}else{
+						halt($path . '控制器未找到');
+					}
+				}else{
+					require_once $path; return;
+				}
+				break;
+			case strlen($className) > 5 && substr($className, -5) == 'Model':
+				$path = COMMON_MODEL_PATH . '/' . $className . '.class.php';
+				is_file($path) OR halt($path . '未找到');
+				include_once $path; return;
+				break;
+			default:
+				$path = TOOL_PATH . '/' . $className .'.class.php';
+				is_file($path) OR halt($path . '类未找到');
+				require_once $path; return;
+				break;
+		}
+		/*
 		if(strlen($className) > 10 && substr($className, -10) == 'Controller'){
 			$path = APP_CONTROLLER_PATH . '/' . $className .'.class.php';
 			if(!is_file($path)){
@@ -127,6 +153,7 @@ str;
 			is_file($path) OR halt($path . '类未找到');
 			require_once $path; return;
 		}
+		*/
 	}
 	/**
 	 * [_create_demo 创建demo]

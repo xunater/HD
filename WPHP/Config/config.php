@@ -26,6 +26,12 @@ return array(
 	"DB_PORT"						=>	3306,
 	"DB_USER"						=>	'root',
 	"DB_PWD"						=>	'',
-	"DB_DATABASE"				=>	'',
-	"DB_PREFIX"					=>	'wb_',
+	"DB_DATABASE"				    =>	'',
+	"DB_PREFIX"					    =>	'wb_',
+    /*********************Smarty相关**********************/
+    "SMARTY_ON"                     =>  true,
+    "SMARTY_LEFT_DELIMITER"         =>  "{sw ",
+    "SMARTY_RIGHT_DELIMITER"        =>  "}",
+    "SMARTY_CACHE_LIFETIME"         =>  30,
+    "SMARTY_CACHE_ON"               =>  false
 );

@@ -5,6 +5,7 @@ class Controller{
 	 * [__construct 扩展构造函数]
 	 */
 	public function __construct(){
+//        parent::__construct();
 		if(method_exists($this, '__auto')){
 			$this->__auto();
 		}
@@ -17,7 +18,7 @@ class Controller{
 	 * @param  string  $msg  [提示信息]
 	 * @param  string  $url  [提示URL]
 	 * @param  integer $time [倒计时时间]
-	 * @return [type]        [description]
+	 * @return null
 	 */
 	public function success($msg='操作成功',$url='',$time=1){
 		$url = $url ? "window.location.href='".$url."'" : "window.history.go(-1)";
@@ -28,26 +29,30 @@ class Controller{
 	 * @param  string  $msg  [提示信息]
 	 * @param  string  $url  [提示URL]
 	 * @param  integer $time [倒计时时间]
-	 * @return [type]        [description]
+	 * @return null
 	 */
 	public function error($msg='操作失败',$url='',$time=3){
 		$url = $url ? "window.location.href='".$url."'" : "window.history.go(-1)";
 		include TPL_PATH . '/error.html';
 	}
+    public function get_tpl($tpl){
+        if(is_null($tpl)){
+            $path = APP_TPL_PATH . '/' . CONTROLLER . '/' . ACTION . C('TPL_SUFFIX');
+        }
+        if(strpos($tpl, '.')){
+            $path = APP_TPL_PATH . '/' . CONTROLLER . '/' . $tpl;
+        }else{
+            $path = APP_TPL_PATH . '/' . CONTROLLER . '/' . $tpl . C('TPL_SUFFIX');
+        }
+        return $path;
+    }
 	/**
 	 * [display 显示模板]
 	 * @param  [string] $tpl [模板文件]
-	 * @return [type]      [description]
+	 * @return null
 	 */
 	public function display($tpl=NULL){
-		if(is_null($tpl)){
-			$path = APP_TPL_PATH . '/' . CONTROLLER . '/' . ACTION . C('TPL_SUFFIX');
-		}
-		if(strpos($tpl, '.')){
-			$path = APP_TPL_PATH . '/' . CONTROLLER . '/' . $tpl;
-		}else{
-			$path = APP_TPL_PATH . '/' . CONTROLLER . '/' . $tpl . C('TPL_SUFFIX');
-		}
+        $path = $this->get_tpl($tpl);
 		is_file($path) OR halt($path . '模板不存在');
 		extract($this->vars);
 		include $path;return;
@@ -57,7 +62,7 @@ class Controller{
 	 * 如果以数组做参数，必须使用关联数组
 	 * @param  [type] $var   [description]
 	 * @param  [type] $value [description]
-	 * @return [type]        [description]
+	 * @return null
 	 */
 	public function assign($var,$value=null){
 		if(is_array($var)){

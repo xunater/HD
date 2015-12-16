@@ -24,6 +24,8 @@ final class WPHP{
 			CORE_PATH . '/Log.class.php',
 			FUNCTION_PATH . '/function.php',
 			CORE_PATH . '/Application.class.php',
+            ORG_PATH . '/Smarty/Smarty.class.php',
+            CORE_PATH . '/SmartyView.class.php',
 			CORE_PATH . '/Controller.class.php'
 		);
 		$str = '';

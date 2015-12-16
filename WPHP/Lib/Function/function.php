@@ -104,4 +104,8 @@ function halt($error,$level='ERROR',$type=3,$dest=NULL){
 function M($table=null){
 	return new Model($table);
 }
+function K($model){
+	$model .= 'Model';
+	return new $model();
+}
 ?>
