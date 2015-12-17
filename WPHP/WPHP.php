@@ -24,8 +24,8 @@ final class WPHP{
 			CORE_PATH . '/Log.class.php',
 			FUNCTION_PATH . '/function.php',
 			CORE_PATH . '/Application.class.php',
-            ORG_PATH . '/Smarty/Smarty.class.php',
-            CORE_PATH . '/SmartyView.class.php',
+      ORG_PATH . '/Smarty/Smarty.class.php',
+      CORE_PATH . '/SmartyView.class.php',
 			CORE_PATH . '/Controller.class.php'
 		);
 		$str = '';
@@ -51,7 +51,9 @@ final class WPHP{
 			COMMON_PATH,
 			COMMON_CONFIG_PATH,
 			COMMON_LIB_PATH,
-			COMMON_MODEL_PATH
+			COMMON_MODEL_PATH,
+			APP_COMPILE_PATH,
+			APP_CACHE_PATH
 		);
 		foreach ($arr as $v) {
 			is_dir($v) OR (mkdir($v,0777,true) && chmod($v, 0777) );
@@ -100,6 +102,10 @@ final class WPHP{
 		define('APP_CONTROLLER_PATH', APP_PATH . '/Controller');
 		define('APP_TPL_PATH', APP_PATH . '/Tpl');
 		define('APP_PUBLIC_PATH', APP_TPL_PATH . '/Public');
+		//应用编译目录
+		define('APP_COMPILE_PATH',TEMP_PATH . '/' . APP_NAME . '/Compile');
+		//应用缓存目录
+		define('APP_CACHE_PATH',TEMP_PATH . '/' . APP_NAME . '/Cache');
 		//框架版本
 		define('WPHP_VERSION','V1.0');
 		//是否是post提交

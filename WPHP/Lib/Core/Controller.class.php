@@ -1,11 +1,13 @@
 <?php
-class Controller{
+class Controller extends SmartyView{
 	private $vars = array();
 	/**
 	 * [__construct 扩展构造函数]
 	 */
 	public function __construct(){
-//        parent::__construct();
+		if(C('SMARTY_ON')){
+	    parent::__construct();
+		}
 		if(method_exists($this, '__auto')){
 			$this->__auto();
 		}
@@ -35,27 +37,37 @@ class Controller{
 		$url = $url ? "window.location.href='".$url."'" : "window.history.go(-1)";
 		include TPL_PATH . '/error.html';
 	}
-    public function get_tpl($tpl){
-        if(is_null($tpl)){
-            $path = APP_TPL_PATH . '/' . CONTROLLER . '/' . ACTION . C('TPL_SUFFIX');
-        }
-        if(strpos($tpl, '.')){
-            $path = APP_TPL_PATH . '/' . CONTROLLER . '/' . $tpl;
-        }else{
-            $path = APP_TPL_PATH . '/' . CONTROLLER . '/' . $tpl . C('TPL_SUFFIX');
-        }
-        return $path;
-    }
+	/**
+	 * [get_tpl 获取模板文件真实路径]
+	 * @param  [string] $tpl [模板文件名]
+	 * @return null
+	 */
+  public function get_tpl($tpl){
+      if(is_null($tpl)){
+          $path = APP_TPL_PATH . '/' . CONTROLLER . '/' . ACTION . C('TPL_SUFFIX');
+          return $path;
+      }
+      if(strpos($tpl, '.')){
+          $path = APP_TPL_PATH . '/' . CONTROLLER . '/' . $tpl;
+      }else{
+          $path = APP_TPL_PATH . '/' . CONTROLLER . '/' . $tpl . C('TPL_SUFFIX');
+      }
+      return $path;
+  }
 	/**
 	 * [display 显示模板]
 	 * @param  [string] $tpl [模板文件]
 	 * @return null
 	 */
-	public function display($tpl=NULL){
-        $path = $this->get_tpl($tpl);
+	protected function display($tpl=NULL){
+    $path = $this->get_tpl($tpl);
 		is_file($path) OR halt($path . '模板不存在');
-		extract($this->vars);
-		include $path;return;
+		if(C('SMARTY_ON')){
+			return parent::display($path);
+		}else{
+			extract($this->vars);
+			include $path;return;			
+		}
 	}
 	/**
 	 * [assign 向模板分配变量]
@@ -64,7 +76,10 @@ class Controller{
 	 * @param  [type] $value [description]
 	 * @return null
 	 */
-	public function assign($var,$value=null){
+	protected function assign($var,$value=null){
+		if(C('SMARTY_ON')){
+			return parent::assign($var,$value);
+		}
 		if(is_array($var)){
 			foreach ($var as $k => $v) {
 				if(!is_string($k)){

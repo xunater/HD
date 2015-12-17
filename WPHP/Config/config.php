@@ -32,6 +32,6 @@ return array(
     "SMARTY_ON"                     =>  true,
     "SMARTY_LEFT_DELIMITER"         =>  "{sw ",
     "SMARTY_RIGHT_DELIMITER"        =>  "}",
-    "SMARTY_CACHE_LIFETIME"         =>  30,
-    "SMARTY_CACHE_ON"               =>  false
+    "SMARTY_CACHE_LIFETIME"         =>  3,
+    "SMARTY_CACHE_ON"               =>  true
 );
